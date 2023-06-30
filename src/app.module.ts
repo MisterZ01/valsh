@@ -75,7 +75,7 @@ import { AuthentModule } from './authent/authent.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'P@stgree50_50',
+      password: 'root',
       database: 'rapportdeux',
       autoLoadModels: true,
      synchronize : true,

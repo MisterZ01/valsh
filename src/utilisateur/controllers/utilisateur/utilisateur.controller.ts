@@ -14,7 +14,7 @@ export class UtilisateurController {
 @Post('inscription')
 
  async inscription(
-
+  //je viens de mettre un commentaire pour faire un test: change le nom de la BD et le mot de passe pour que tout marche chez toi
   // lienphoto:any,
   
    @Body('nom_user') nom_user: string,
