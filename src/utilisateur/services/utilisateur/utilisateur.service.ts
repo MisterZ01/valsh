@@ -8,29 +8,18 @@ export type User = any;
 @Injectable()
 export class UtilisateurService {
 
-  private readonly users = [
-    {
-      id: 1,
-      nom_utilisateur: 'vyvy',
-      mdp: 'vvvyvy',
-    }
-
-    ];
-    async findOne(username: string): Promise<User | undefined> {
-      return this.users.find(user => user.nom_utilisateur === username);
+    async findByUsername(nom_utilisateur: string): Promise<User | null> {
+      return Utilisateur.findOne({
+        where: { nom_utilisateur },
+      });
     }
 
   async createUser(nom: string, prenom : string, email: string, contact: number, profession: string, 
     nomutilisateur: string, mdp: string, profile: string, image_users: string) { 
-        
-    
-
-
-
+     
     const salt = await bcrypt.genSalt(10);
     const hashed = await bcrypt.hash(mdp, salt);
     
-
     const newUser = new Utilisateur();
      newUser.nom_user= nom;
      newUser.prenom_user=prenom;

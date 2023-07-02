@@ -62,7 +62,8 @@ import { VilleQuartierModule } from './ville_quartier/ville_quartier.module';
 import { RapportModule } from './rapport/rapport.module';
 import { Rapport } from './models/rapport.model';
 import { PassportModule } from '@nestjs/passport/dist';
-import { AuthentModule } from './authent/authent.module';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
@@ -169,6 +170,8 @@ import { AuthentModule } from './authent/authent.module';
     VilleQuartierModule,
     
     RapportModule,
+    
+    AuthModule,
 
   
     
