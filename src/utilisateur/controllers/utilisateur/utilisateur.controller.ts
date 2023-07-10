@@ -15,23 +15,6 @@ export class UtilisateurController {
 
   @Post('inscription')
 
-<<<<<<< HEAD
- async inscription(
-  //je viens de mettre un commentaire pour faire un test: change le nom de la BD et le mot de passe pour que tout marche chez toi
-  // lienphoto:any,
-  
-   @Body('nom_user') nom_user: string,
-   @Body('prenom_user') prenom_user : string,
-   @Body('email') email: string,
-   @Body('contact') contact: number,
-   @Body('profession') profession: string, 
-   @Body('nom_utilisateur') nom_utilisateur: string,
-   @Body('mdp') mdp: string,  
-   @Body('profile') profile: string,
-   @Body('image_users') image_users: string){
-        
-    console.log(mdp,email,profile,nom_user)
-=======
    @UseInterceptors(
     FileInterceptor('image_users',
       {
@@ -39,7 +22,6 @@ export class UtilisateurController {
         storage: diskStorage({
 
           destination: './uploads',
->>>>>>> main
 
           filename: (req, file, callback) => {
 

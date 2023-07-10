@@ -9,21 +9,27 @@ import {
   UseGuards
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { LocalAuthGuard } from './local-auth.guard';
 // import { localAuthGuard } from './local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
-  // @UseGuards(localAuthGuard)
+  @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Body() body) {
-    const user = this.authService.VerificationUtilisateur(body.email, body.mdp)
-    return user;
+  async login(@Request() req) {
+    return this.authService.login(req.user);
   }
 
-  // @UseGuards(localAuthGuard)
-  @Get('profile')
+  // async login(@Body() body) {
+  //   const user = this.authService.VerificationUtilisateur(body.email, body.mdp)
+  //   return user;
+  // }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('welcome')
   getProfile(@Request() req) {
     return req.user;
   }

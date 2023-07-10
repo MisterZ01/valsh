@@ -13,13 +13,14 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         console.log("dans strategie 1")
     }
 
-    async validate(username:string, mdp:string){
+    async validate(username:string, password:string){
         console.log("dans strategie 2")
-        const user =  this.authService.VerificationUtilisateur(username, mdp);
+        const user =  this.authService.VerificationUtilisateur(username, password);
         if (!user){ 
             console.log('dans local.startegy');
             throw new UnauthorizedException()
         }
+        return user;
     }
 
 }

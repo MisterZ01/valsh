@@ -1,14 +1,16 @@
 import {  BadRequestException, Injectable, UnauthorizedException} from '@nestjs/common';
+// import { JwtService } from '@nestjs/jwt/dist/jwt.service';
 import { UtilisateurService } from 'src/utilisateur/services/utilisateur/utilisateur.service';
-import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt'
 import { Utilisateur } from 'src/models/utilisateur.model';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
 
    constructor(
      private usersService: UtilisateurService,
+    private jwtService: JwtService
      ) {}
 
    async VerificationUtilisateur(username: string, mdp: string): Promise<Utilisateur| undefined> {
@@ -32,9 +34,15 @@ export class AuthService {
      throw new UnauthorizedException();
      ;
    }
+// implementation de jwt
 
-
-
+async login(user: any) {
+  const payload = { username: user.username, sub: user.userId };
+  console.log(user.username)
+  return {
+    access_token: this.jwtService.sign(payload),
+  };
+}
 
 
 
