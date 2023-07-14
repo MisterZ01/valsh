@@ -7,6 +7,7 @@ import { Terrasse_sol } from './terrasse_sol.model';
 import { Controlenv } from './controlenv.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -161,4 +162,7 @@ export class Site extends Model {
     id_ville_quartier : number;
    @BelongsTo(() => Ville_quartier)
    ville_quartier : Ville_quartier;
+
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

@@ -22,7 +22,12 @@ export class Image extends Model {
   @IsNotEmpty()
   @IsString()
   @Column({allowNull : true})
-  description: string;
+  image_site: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  description_site: string;
 
   @ForeignKey(() => Controlenv)
   @Column
