@@ -77,7 +77,7 @@ import { AuthModule } from './auth/auth.module';
       port: 5432,
       username: 'postgres',
       password: 'P@stgree50_50',
-      database: 'rapportdeux',
+      database: 'rapporttrois',
       autoLoadModels: true,
      synchronize : true,
       models:[
