@@ -2,6 +2,7 @@ import { Departement } from 'src/models/departement.model';
 import { Ville_quartier } from 'src/models/ville_quartier.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -33,5 +34,8 @@ export class Commune extends Model {
    id_departement : number;
    @BelongsTo(() => Departement)
    communes: Departement;
+
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }
  

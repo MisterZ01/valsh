@@ -2,6 +2,7 @@ import { Grille_protec } from 'src/models/grille_protec.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { Site } from './site.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -53,6 +54,10 @@ export class Climatisation extends Model {
 
   @HasMany(() => Grille_protec)
   grille_protecs: Grille_protec[];
+
+  
+  @HasMany(() => Rapport)
+  rapports: Rapport[];
 
 
 }

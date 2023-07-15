@@ -2,6 +2,7 @@ import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'se
 import { Commune } from './commune.model';
 import { Region } from './region.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -34,4 +35,7 @@ export class Departement extends Model {
  
    @Column({ defaultValue: new Date() })
    updatedAt: Date;
+
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

@@ -1,6 +1,7 @@
 import { Localtechnique } from 'src/models/localtechnique.model';
 import { Model, Column, Table, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -32,4 +33,8 @@ export class Extincteur extends Model {
    id_localtechnique : number;
    @BelongsTo(() => Localtechnique)
    localtechnique: Localtechnique;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

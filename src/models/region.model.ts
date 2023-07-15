@@ -1,6 +1,7 @@
 import { Departement } from 'src/models/departement.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -26,4 +27,7 @@ export class Region extends Model {
 
   @HasMany(() => Departement)
   departements : Departement[];
+
+  @HasMany(() => Rapport)
+  rapports: Rapport[];
 }

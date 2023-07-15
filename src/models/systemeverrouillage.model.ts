@@ -1,6 +1,7 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { Localtechnique } from './localtechnique.model';
 import { Model, Column, Table, BelongsTo, HasMany, HasOne,ForeignKey } from 'sequelize-typescript';
+import { Rapport } from './rapport.model';
 
 
 
@@ -27,6 +28,10 @@ export class Systemeverrouillage extends Model {
    id_localtechnique : number;
    @BelongsTo(() => Localtechnique)
    localtechnique: Localtechnique;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }
 
 

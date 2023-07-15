@@ -40,8 +40,4 @@ export class Membreequipe extends Model {
  @BelongsTo(() => Utilisateur)
  utilisateur: Utilisateur;
 
-  
-
-
-
 }

@@ -1,6 +1,7 @@
 import { Climatisation } from 'src/models/climatisation.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -34,4 +35,8 @@ export class Grille_protec extends Model {
    id_climatisation : number;
    @BelongsTo(() => Climatisation)
    climatisation: Climatisation;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

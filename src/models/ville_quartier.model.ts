@@ -2,6 +2,7 @@ import { Commune } from './commune.model';
 import { Site } from 'src/models/site.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -29,6 +30,9 @@ export class Ville_quartier extends Model {
   
    @HasMany(() => Site)
    sites: Site[];
+
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 
    @ForeignKey(() => Commune)
    @Column

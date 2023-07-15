@@ -4,6 +4,7 @@ import { Model, Column, Table, BelongsTo, ForeignKey , HasOne, HasMany } from 's
 import { Equipe } from './equipe.model';
 import { Image } from './image.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -47,6 +48,10 @@ export class Controlenv extends Model {
 
    @HasOne(() => Synthese)
    synthese : Synthese
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 
 
 }

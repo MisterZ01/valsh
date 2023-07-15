@@ -6,6 +6,7 @@ import { Etancheitesite } from 'src/models/etancheitesite.model';
 import { Model, Column, Table, HasMany, HasOne, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { Site } from './site.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -49,5 +50,9 @@ export class Terrasse_sol extends Model {
 
    @HasMany(() => Garde_corps)
    garde_corpss: Garde_corps[];
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 
 }

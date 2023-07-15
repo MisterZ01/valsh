@@ -1,6 +1,7 @@
 import { Accessibilite } from 'src/models/accessibilite.model';
 import { Model, Column, Table, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -28,4 +29,8 @@ export class Plaquesignal extends Model {
    id_accessibilite : number;
    @BelongsTo(() => Accessibilite)
    accessibilite: Accessibilite;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

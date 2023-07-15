@@ -1,6 +1,7 @@
 import { Model, Column, Table, HasMany, BelongsTo, ForeignKey} from 'sequelize-typescript';
 import { Terrasse_sol } from './terrasse_sol.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -28,4 +29,8 @@ export class Etancheitemassif extends Model {
    id_terrasse_sol : number;
    @BelongsTo(() => Terrasse_sol)
    terrasse_sol: Terrasse_sol;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

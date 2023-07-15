@@ -5,6 +5,7 @@ import { Serrure } from 'src/models/serrure.model';
 import { Model, Column, Table, HasMany, HasOne, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { Site } from './site.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 @Table({ tableName: 'accessibilite' })
@@ -35,4 +36,7 @@ export class Accessibilite extends Model {
 
    @HasMany(() => Plaquesignal)
    plaquesignals: Plaquesignal[];
+
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 }

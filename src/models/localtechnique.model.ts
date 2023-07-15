@@ -4,6 +4,7 @@ import { Extincteur } from './extincteur.model';
 import { Systemeverrouillage } from './systemeverrouillage.model';
 import { Site } from './site.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -46,5 +47,9 @@ export class Localtechnique extends Model {
 
    @HasMany(() => Site)
    sites : Site[]
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 
 }

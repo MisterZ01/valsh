@@ -1,6 +1,7 @@
 import { Controlenv } from 'src/models/controlenv.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -32,5 +33,9 @@ export class Synthese extends Model {
    id_controlenv:number;
    @BelongsTo(() => Controlenv)
    controlenv: Controlenv;
+
+   
+   @HasMany(() => Rapport)
+   rapports: Rapport[];
 
 }
