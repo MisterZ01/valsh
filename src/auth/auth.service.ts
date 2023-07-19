@@ -14,35 +14,27 @@ export class AuthService {
      ) {}
 
    async VerificationUtilisateur(username: string, mdp: string): Promise<Utilisateur| undefined> {
-    console.log("dans auth service 1")
-
-     const user = await this.usersService.findByUsername(username);
-
-     if(!user){ 
-      console.log("dans auth service 2");
+    const user = await this.usersService.findByUsername(username);
+     if(!user){ //verification si l'utilisateur est trouvé
       throw new BadRequestException()
     }
-    // const salt = await bcrypt.genSalt(10);
-    // const hashed = await bcrypt.hash(mdp, salt);
-    // console.log(bcrypt.compare(hashed, user.mdp))
-     if (bcrypt.compareSync(mdp.toString(), user.mdp)) {
-      // console.log(bcrypt.compareSync(mdp, user.mdp));
-       return user;
+     if (bcrypt.compareSync(mdp.toString(), user.mdp)) { //verifier le mot de passe si le user est trouvé
+       return user; //retourner l'utilisateur
      }
-     console.log("dans auth service 4");
 
-     throw new UnauthorizedException();
+     throw new UnauthorizedException(); //si rien n'est trouvé lever une exception
      ;
    }
 // implementation de jwt
 
 async login(user: any) {
-  const payload = { username: user.username, sub: user.userId };
-  console.log(user.username)
+  const payload = {user};
+  // console.log(user.id)
   return {
     access_token: this.jwtService.sign(payload),
   };
 }
+
 
 
 
