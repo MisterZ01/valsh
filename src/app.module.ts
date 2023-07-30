@@ -38,7 +38,7 @@ import { ControleModule } from './controle/controle.module';
       port: 5432,
       username: 'postgres',
       password: 'P@stgree50_50',
-      database: 'BDpgAdmin',
+      database: 'pgAdminBD',
       autoLoadModels: true,
      synchronize : true,
       models:[

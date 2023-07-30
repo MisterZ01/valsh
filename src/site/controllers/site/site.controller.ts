@@ -32,14 +32,16 @@ export class SiteController {
               @Body('nom_commune') nom_commune: string,
               @Body('nom_departement') nom_departement: string,
               @Body('nom_region') nom_region: string,
-              @Body('nom_ville_quartier') nom_ville_quartier: string){
+              @Body('nom_ville_quartier') nom_ville_quartier: string,
+              @Body('id_rapport') id_rapport: number){
     
                  console.log(typenv, nomsite, situationgeo, densite, typologie, station, localtec, plaqueident, datemiseservice, hauteurbatiment, latitude,
                     longitude, altitude, vigile, nbrevigile, societegardiennagevigile, typstation, observation, nom_commune, nom_departement, nom_region,
+                    id_rapport,
                     nom_ville_quartier, )
 
                  await this.sity.createSite(typenv, nomsite, situationgeo, densite, typologie, station, localtec, plaqueident, datemiseservice, hauteurbatiment, latitude, longitude, altitude, vigile, nbrevigile, societegardiennagevigile, typstation, observation,
-                  nom_commune, nom_departement, nom_region, nom_ville_quartier)
+                  nom_commune, nom_departement, nom_region, nom_ville_quartier, id_rapport)
 
                }
 }

@@ -2,6 +2,7 @@ import { Utilisateur } from 'src/models/utilisateur.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { Equipe } from './equipe.model';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Rapport } from './rapport.model';
 
 
 
@@ -34,10 +35,11 @@ export class Membreequipe extends Model {
  @BelongsTo(() => Equipe)
  equipe: Equipe;
 
-  @ForeignKey(() => Utilisateur)
-@Column
- id_utilisateur:number;
- @BelongsTo(() => Utilisateur)
- utilisateur: Utilisateur;
+   
+ @ForeignKey(() => Rapport)
+ @Column 
+ id_rapport : number
+ @BelongsTo(() => Rapport)
+ rapport : Rapport;
 
 }

@@ -143,11 +143,18 @@ export class Site extends Model {
   @Column({allowNull : true})
   observation: string;
 
-    @HasMany(() => Controlenv)
-    controlenvs: Controlenv[];
+    // @HasMany(() => Controlenv)
+    // controlenvs: Controlenv[];
 
 
 
-   @HasMany(() => Rapport)
-   rapports: Rapport[];
+  //  @HasMany(() => Rapport)
+  //  rapports: Rapport[];
+
+    
+  @ForeignKey(() => Rapport)
+  @Column 
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 }

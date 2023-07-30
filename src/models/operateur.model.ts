@@ -24,6 +24,13 @@ export class Operateur extends Model {
   @Column({allowNull : true})
   typelocal: string;
  
-   @HasMany(() => Rapport)
-   rapports : Rapport[]
+  //  @HasMany(() => Rapport)
+  //  rapports : Rapport[]
+
+    
+  @ForeignKey(() => Rapport)
+  @Column 
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 }

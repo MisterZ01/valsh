@@ -250,27 +250,34 @@ export class Controlenv extends Model {
   observation: string;
 
 
-  @ForeignKey(() => Equipe)
-  @Column
-   id_equipe : number;
-   @BelongsTo(() => Equipe)
-   equipe: Equipe;
+  // @ForeignKey(() => Equipe)
+  // @Column
+  //  id_equipe : number;
+  //  @BelongsTo(() => Equipe)
+  //  equipe: Equipe;
 
-   @ForeignKey(() => Controlenv)
-   @Column
-    id_site : number;
-    @BelongsTo(() => Site)
-    site: Site;
+  //  @ForeignKey(() => Controlenv)
+  //  @Column
+  //   id_site : number;
+  //   @BelongsTo(() => Site)
+  //   site: Site;
 
    @HasMany(() => Image)
    images: Image[];
 
-   @HasOne(() => Synthese)
-   synthese : Synthese
+  //  @HasOne(() => Synthese)
+  //  synthese : Synthese
+
+     
+  @ForeignKey(() => Rapport)
+  @Column 
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 
    
-   @HasMany(() => Rapport)
-   rapports: Rapport[];
+  //  @HasMany(() => Rapport)
+  //  rapports: Rapport[];
 
 
 }

@@ -9,7 +9,8 @@ export class ControlenvService {
         presence_etancheitemassif: string, etat_etancheitemassif: string, presence_etancheitesite: string, etat_etancheitesite: string, presencesysteme_evacuation: string, etatsysteme_evacuation: string,
         presence_extincteur: string, validite: string, nbre_extincteur:number, presence_garde_corps: string, etat_garde_corps: string, presence_grille: string, etat_grille_protec: string, observation: string,
         etatlocal: string, typelocal: string, etatboulonnerie: string, etatassessoire : string, presence_plaquesignal: string, etat_plaquesignal: string, presence_portail: string, etat_portail: string, type_portail: string,
-        presence_serrure: string, etat_serrure: string, telemetrie: string, presencesysteme_verrouillage: string, etatsysteme_verrouillage: string, hauteurterrasse: number, etatterrasse: string, revetement_espace: string) {
+        presence_serrure: string, etat_serrure: string, telemetrie: string, presencesysteme_verrouillage: string, etatsysteme_verrouillage: string, hauteurterrasse: number, etatterrasse: string, revetement_espace: string,
+        id_rapport:number) {
 
         const cont = new Controlenv();
         cont.cheminaccess= cheminaccess;
@@ -58,6 +59,8 @@ export class ControlenvService {
         cont.hauteurterrasse= hauteurterrasse;
         cont.etatterrasse= etatterrasse;
         cont.revetement_espace= revetement_espace;
+        // cont.id_site= id_site;
+        cont.id_rapport= id_rapport;
 
         console.log(cont);
         return await cont.save()

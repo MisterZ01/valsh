@@ -12,14 +12,12 @@ export class RapportController {
 
        async rapport(
   
-              @Body('titre_rapport') titre_rapport: string,
-              @Body('date_debut') date_debut: Date,
               @Body('statut') statut: string,
-              @Body('date_finition') date_finition: Date){
+              @Body('id_utilisateur') id_utilisateur: number){
     
-                 console.log(titre_rapport, date_debut, statut, date_finition)
+                 console.log( statut, id_utilisateur)
 
-                 await this.rapp.createRapport(titre_rapport, date_debut, statut, date_finition)
+                 await this.rapp.createRapport( id_utilisateur, statut )
 
                } 
 }

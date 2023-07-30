@@ -25,12 +25,19 @@ export class Equipe extends Model {
   @HasMany(() => Membreequipe)
   membreequipes : Membreequipe[];
 
-  @HasMany(() => Rapport)
-  rapports: Rapport[];
+  // @HasMany(() => Rapport)
+  // rapports: Rapport[];
 
 
-  @HasOne (() => Controlenv)
-  controlenv : Controlenv;
+  // @HasOne (() => Controlenv)
+  // controlenv : Controlenv;
+
+    
+  // @ForeignKey(() => Rapport)
+  // @Column 
+  // id_rapport : number
+  // @BelongsTo(() => Rapport)
+  // rapport : Rapport;
 
 
 }

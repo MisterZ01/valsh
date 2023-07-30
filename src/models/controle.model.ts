@@ -1,6 +1,7 @@
-import { IsNotEmpty, IsString } from "class-validator";
+import { IsNotEmpty, IsString, } from "class-validator";
 import { Model } from "sequelize";
-import { Column, Table } from "sequelize-typescript";
+import { Column, Table, BelongsTo, ForeignKey } from "sequelize-typescript";
+import { Rapport } from "./rapport.model";
 
 @Table({ tableName: 'controle' })
 export class Equipe extends Model {
@@ -15,5 +16,12 @@ export class Equipe extends Model {
   @IsString()
   @Column({allowNull : true})
   conformite: string;
+
+  
+  @ForeignKey(() => Rapport)
+  @Column 
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 
 }

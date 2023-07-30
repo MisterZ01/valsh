@@ -57,21 +57,24 @@ export class ControlenvController {
               @Body('etatsysteme_verrouillage') etatsysteme_verrouillage: string,
               @Body('hauteurterrasse') hauteurterrasse: number,
               @Body('etatterrasse') etatterrasse: string,
-              @Body('revetement_espace') revetement_espace: string){
+              @Body('revetement_espace') revetement_espace: string,
+            //   @Body('id_site') id_site: number,
+              @Body('id_rapport') id_rapport: number){
     
                  console.log(cheminaccess, presenceclim, etatclim, nbreclim, typeclim, etancheiteconnexion, condenseur, tuyauterieclim,
                   presence_cloture, etat_cloture, type_cloture, presence_proximite_emprise, nom_emprise, precision_emprise, distancesite_emprise,
                   presence_etancheitemassif, etat_etancheitemassif, presencet_etancheitesite, etat_etancheitesite, presencesysteme_evacuation, etatsysteme_evacuation,
                   presence_extincteur, validite, nbre_extincteur, presence_garde_corps, etat_garde_corps, presence_grille, etat_grille, observation, etatlocal,
                   typelocal, etatboulonnerie, etatassessoire, presence_plaquesignal, etat_plaquesignal, presence_portail, etat_portail, type_portail,
-                  presence_serrure, etat_serrure, telemetrie, presencesysteme_verrouillage, etatsysteme_verrouillage, hauteurterrasse, etatterrasse, revetement_espace )
+                  presence_serrure, etat_serrure, telemetrie, presencesysteme_verrouillage, etatsysteme_verrouillage, hauteurterrasse, etatterrasse, revetement_espace,
+                   id_rapport )
 
                  await this.control.createControl(cheminaccess, presenceclim, etatclim, nbreclim, typeclim, etancheiteconnexion, condenseur, tuyauterieclim,
                   presence_cloture, etat_cloture, type_cloture, presence_proximite_emprise, nom_emprise, precision_emprise, distancesite_emprise,
                   presence_etancheitemassif, etat_etancheitemassif, presencet_etancheitesite, etat_etancheitesite, presencesysteme_evacuation, etatsysteme_evacuation,
                   presence_extincteur, validite, nbre_extincteur, presence_garde_corps, etat_garde_corps, presence_grille, etat_grille, observation, etatlocal,
                   typelocal, etatboulonnerie, etatassessoire, presence_plaquesignal, etat_plaquesignal, presence_portail, etat_portail, type_portail, presence_serrure, etat_serrure,
-                  telemetrie, presencesysteme_verrouillage, etatsysteme_verrouillage, hauteurterrasse, etatterrasse, revetement_espace)
+                  telemetrie, presencesysteme_verrouillage, etatsysteme_verrouillage, hauteurterrasse, etatterrasse, revetement_espace, id_rapport)
 
                } 
 }
