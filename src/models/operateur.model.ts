@@ -1,4 +1,3 @@
-import { Localtechnique } from 'src/models/localtechnique.model';
 import { Model, Column, Table, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { Rapport } from './rapport.model';
@@ -24,14 +23,7 @@ export class Operateur extends Model {
   @IsString()
   @Column({allowNull : true})
   typelocal: string;
-
-  @ForeignKey(() => Localtechnique)
-  @Column
-   id_localtechnique : number;
-   @BelongsTo(() => Localtechnique)
-   localtechnique: Localtechnique;
-
-   
+ 
    @HasMany(() => Rapport)
    rapports : Rapport[]
 }

@@ -12,5 +12,5 @@ export class EquipeService {
         return await equip.save()
 
 
-         }
+    }
 }

@@ -5,7 +5,7 @@ import { EquipeService } from 'src/equipe/services/equipe/equipe.service';
 export class EquipeController {
 
        
-    constructor(private rapp : EquipeService ){}
+    constructor(private equ : EquipeService ){}
 
 
     @Post('equipe')
@@ -16,7 +16,7 @@ export class EquipeController {
     
                  console.log(nomequipe)
 
-                 await this.rapp.createEquipe(nomequipe)
+                 await this.equ.createEquipe(nomequipe)
 
                } 
 }

@@ -6,7 +6,7 @@ export class SiteService {
 
     
     async createSite( typenv: string, nomsite: string, situationgeo: string, densite : string, typologie : string, station: string, localtec: string, plaqueident : string, datemiseservice : Date, hauteurbatiment : string, latitude : string,
-        longitude: string, altitude: string, vigile: string, nbrevigile: number, societegardiennagevigile: string, typstation:string, observation: string ) {
+        longitude: string, altitude: string, vigile: string, nbrevigile: number, societegardiennagevigile: string, typstation:string, observation: string, nom_commune: string,  nom_departement: string,  nom_region: string,  nom_ville_quartier: string) {
 
         const sit = new Site();
         sit.typenv= typenv;
@@ -27,6 +27,10 @@ export class SiteService {
         sit.societegardiennagevigile= societegardiennagevigile;
         sit.typstation= typstation,
         sit.observation= observation;
+        sit.nom_commune= nom_commune;
+        sit.nom_departement= nom_departement;
+        sit.nom_region= nom_region;
+        sit.nom_ville_quartier= nom_ville_quartier;
         console.log(sit);
         return await sit.save()
          }
