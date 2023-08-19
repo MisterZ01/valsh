@@ -10,14 +10,11 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 
     constructor(private authService :AuthService){
         super();
-        console.log("dans strategie 1")
     }
 
     async validate(username:string, password:string){
-        console.log("dans strategie 2")
         const user =  this.authService.VerificationUtilisateur(username, password);
         if (!user){ 
-            console.log('dans local.startegy');
             throw new UnauthorizedException()
         }
         return user;

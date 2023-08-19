@@ -12,11 +12,12 @@ export class OperateurController {
        async operateur(
   
               @Body('nomoperateur') nomoperateur: string,
-              @Body('typelocal') typelocal: string){
+              @Body('typelocal') typelocal: string,
+              @Body('id_rapport') id_rapport: number){
     
-                 console.log(nomoperateur, typelocal)
+                 console.log(nomoperateur, typelocal, id_rapport)
 
-                 await this.operat.createOperateur(nomoperateur, typelocal)
+                 await this.operat.createOperateur(nomoperateur, typelocal, id_rapport)
 
                } 
 }

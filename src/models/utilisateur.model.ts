@@ -2,6 +2,7 @@ import { Membreequipe } from 'src/models/membreequipe.model';
 import { Model, Column, Table, HasMany, HasOne, BelongsTo, ForeignKey } from 'sequelize-typescript';
 import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, Length } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger';
+import { Rapport } from './rapport.model';
 
 
 
@@ -72,8 +73,14 @@ export class Utilisateur extends Model {
   @Column({allowNull : true})
   image_users: string;
 
-  @HasOne(() => Membreequipe)
-  membreequipe: Membreequipe[];
+  // @HasOne(() => Membreequipe)
+  // membreequipe: Membreequipe[];
+
+  @HasMany(() => Rapport)
+  rapports: Rapport[];
+
+      
+  
 
 
 }
