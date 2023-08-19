@@ -76,8 +76,8 @@ import { AuthModule } from './auth/auth.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'P@stgree50_50',
-      database: 'rapporttrois',
+      password: 'root',
+      database: 'rapDB',
       autoLoadModels: true,
      synchronize : true,
       models:[
