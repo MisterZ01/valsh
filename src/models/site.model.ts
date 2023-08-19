@@ -1,9 +1,4 @@
-import { Ville_quartier } from 'src/models/ville_quartier.model';
-import { Climatisation } from 'src/models/climatisation.model';
-import { Accessibilite } from 'src/models/accessibilite.model';
-import { Localtechnique } from 'src/models/localtechnique.model';
 import { Model, Column, Table, HasMany, ForeignKey, HasOne, BelongsTo } from 'sequelize-typescript';
-import { Terrasse_sol } from './terrasse_sol.model';
 import { Controlenv } from './controlenv.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
@@ -121,48 +116,45 @@ export class Site extends Model {
   @Column({allowNull : true})
   typstation: string;
 
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  nom_region: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  nom_ville_quartier: string;
+
+  
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  nom_departement: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  nom_commune: string;
+
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
   @Column({allowNull : true})
   observation: string;
 
-  @ForeignKey(() => Localtechnique)
-  @Column
-   id_localtechique : number;
-   @BelongsTo(() => Localtechnique)
-   localtechnique: Localtechnique;
+    // @HasMany(() => Controlenv)
+    // controlenvs: Controlenv[];
 
-  @ForeignKey(() => Accessibilite)
-  @Column
-   id_accessibilite : number;
-   @BelongsTo(() => Accessibilite)
-   accessibilite: Accessibilite;
 
-  @ForeignKey(() => Terrasse_sol)
-  @Column
-   id_terrasse_sol : number;
-   @BelongsTo(() => Terrasse_sol)
-   terrasse_sol: Terrasse_sol;
 
-  @ForeignKey(() => Climatisation)
-  @Column
-   id_climatisation : number;
-   @BelongsTo(() => Climatisation)
-   climatisation: Climatisation;
+  //  @HasMany(() => Rapport)
+  //  rapports: Rapport[];
 
-   @ForeignKey(() => Controlenv)
-   @Column
-    id_controlenv : number;
-    @BelongsTo(() => Controlenv)
-    controlenv: Controlenv;
-
-   @ForeignKey(() => Ville_quartier)
-   @Column
-    id_ville_quartier : number;
-   @BelongsTo(() => Ville_quartier)
-   ville_quartier : Ville_quartier;
-
-   @HasMany(() => Rapport)
-   rapports: Rapport[];
+    
+  @ForeignKey(() => Rapport)
+  @Column 
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 }

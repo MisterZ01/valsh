@@ -13,11 +13,13 @@ export class MembreequipeController {
   
               @Body('nom') nom: string,
               @Body('prenom') prenom: string,
-              @Body('fonction') fonction: string){
+              @Body('fonction') fonction: string,
+              @Body('id_equipe') id_equipe: number,
+              @Body('id_rapport') id_rapport: number){
     
-                 console.log(nom, prenom, fonction)
+                 console.log(nom, prenom, fonction, id_equipe, id_rapport)
 
-                 await this.membree.createMembre(nom, prenom, fonction)
+                 await this.membree.createMembre(nom, prenom, fonction, id_equipe, id_rapport)
 
                } 
 }

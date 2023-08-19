@@ -14,11 +14,12 @@ export class SyntheseController {
   
               @Body('partieconcernee') partieconcernee: string,
               @Body('anormalies') anormalies: string,
-              @Body('recommandations') recommandations: string){
+              @Body('recommandations') recommandations: string,
+              @Body('id_rapport') id_rapport: number){
     
-                 console.log(partieconcernee, anormalies, recommandations)
+                 console.log(partieconcernee, anormalies, recommandations, id_rapport)
 
-                 await this.synthe.createSynthese(partieconcernee, anormalies, recommandations)
+                 await this.synthe.createSynthese(partieconcernee, anormalies, recommandations, id_rapport)
 
                }
 }
