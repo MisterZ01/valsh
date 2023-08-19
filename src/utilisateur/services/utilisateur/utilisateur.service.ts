@@ -42,5 +42,6 @@ export class UtilisateurService {
     const user = Utilisateur.findAll();
     console.log(user);
     return user ;
+
   }
 }

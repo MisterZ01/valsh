@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post , Get, Param, ParseIntPipe} from '@nestjs/common';
 import { RapportService } from 'src/rapport/services/rapport/rapport.service';
 
 @Controller('rapport')
@@ -13,16 +13,24 @@ export class RapportController {
        async rapport(
   
               @Body('statut') statut: string,
-<<<<<<< HEAD
-              @Body('date_finition') date_finition: Date){
-                 console.log(titre_rapport, date_debut, statut, date_finition)
-=======
+              @Body('titre_rapport') titre_rapport: string,
               @Body('id_utilisateur') id_utilisateur: number){
     
                  console.log( statut, id_utilisateur)
->>>>>>> d03f343c7a3f99e0a3574340007527bd0135dbc7
 
-                 await this.rapp.createRapport( id_utilisateur, statut )
+                 return await this.rapp.createRapport( id_utilisateur, statut,titre_rapport )
 
-               } 
+               }
+   // afficher la liste des rapports
+
+  @Get('listrapport')
+  findAll() {
+    return this.rapp.findAll();
+  }
+
+   // retrouver un rapport par son ID
+   @Get(':id')
+   async findOneById(@Param('id', ParseIntPipe) id: number) {
+     return this.rapp.findOneById(id);
+   }
 }

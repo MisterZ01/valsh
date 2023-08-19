@@ -37,13 +37,8 @@ import { ConclusionModule } from './conclusion/conclusion.module';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-<<<<<<< HEAD
       password: 'root',
       database: 'rapDB',
-=======
-      password: 'P@stgree50_50',
-      database: 'pgAdminBD',
->>>>>>> d03f343c7a3f99e0a3574340007527bd0135dbc7
       autoLoadModels: true,
      synchronize : true,
       models:[
