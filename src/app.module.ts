@@ -23,7 +23,7 @@ import { Rapport } from './models/rapport.model';
 import { PassportModule } from '@nestjs/passport/dist';
 import { AuthModule } from './auth/auth.module';
 import { Equipe } from './models/equipe.model';
-import { ControleModule } from './controle/controle.module';
+import { ConclusionModule } from './conclusion/conclusion.module';
 
 
 @Module({
@@ -74,10 +74,7 @@ import { ControleModule } from './controle/controle.module';
     
     AuthModule,
     
-    ControleModule,
-    
-
-  
+    ConclusionModule,
     
   ],
   controllers: [AppController],
