@@ -23,10 +23,10 @@ export class Rapport extends Model {
   // @Column({allowNull : true})
   // titre_rapport: string;
 
-  // @IsNotEmpty()
-  // @IsString()
-  // @Column({allowNull : true})
-  // date_debut: Date;
+  @IsNotEmpty()
+  @IsString()
+  @Column({allowNull : true})
+  titre_rapport: string;
 
   @IsNotEmpty()
   @IsString()
