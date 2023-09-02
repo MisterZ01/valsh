@@ -1,6 +1,11 @@
+import { Image } from './../../../models/image.model';
+import { Synthese } from './../../../models/synthese.model';
 import { Injectable } from '@nestjs/common';
 import { Rapport } from 'src/models/rapport.model';
 import { Membreequipe } from 'src/models/membreequipe.model';
+import { Operateur } from 'src/models/operateur.model';
+import { Site } from 'src/models/site.model';
+import { Controlenv } from 'src/models/controlenv.model';
 
 @Injectable()
 export class RapportService {
@@ -30,11 +35,21 @@ async findOneById(id: number){
     // recherche dans les differentes tables
      const rapport =  Rapport.findOne({ where: { id } });
      const membreequipe =  Membreequipe.findAll({ where: { id_rapport : id } });
+     const operateur =  Operateur.findAll({ where: { id_rapport : id } });
+     const synthese =  Synthese.findAll({ where: { id_rapport : id } });
+     const site =  Site.findAll({ where: { id_rapport : id } });
+     const image =  Image.findAll({ where: { id_rapport : id } });
+     const controlenv =  Controlenv.findAll({ where: { id_rapport : id } });
 
     // Combinaisons des resultats
     const RapportComplet: any[] = [];
     if (rapport) RapportComplet.push((await rapport).toJSON());
     if (membreequipe) RapportComplet.push((await membreequipe)); // A revoir .......
+    if (operateur) RapportComplet.push((await operateur)); // A revoir .......
+    if (synthese) RapportComplet.push((await synthese)); // A revoir .......
+    if (site) RapportComplet.push((await site)); // A revoir .......
+    if (image) RapportComplet.push((await image)); // A revoir .......
+    if (controlenv) RapportComplet.push((await controlenv)); 
 
     // retrour des resultats combinés
     return RapportComplet

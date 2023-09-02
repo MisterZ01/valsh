@@ -18,7 +18,7 @@ export class RapportController {
     
                  console.log( statut, id_utilisateur)
 
-                 return await this.rapp.createRapport( id_utilisateur, statut,titre_rapport )
+                 return await this.rapp.createRapport( id_utilisateur, statut, titre_rapport )
 
                }
    // afficher la liste des rapports
