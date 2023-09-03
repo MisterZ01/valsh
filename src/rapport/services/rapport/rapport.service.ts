@@ -54,4 +54,33 @@ async findOneById(id: number){
     // retrour des resultats combinés
     return RapportComplet
   }
+
+    // Compter les rapport 
+
+    async countReport(){
+        const nbrapportFini = await Rapport.count({ where: { statut : '1' } });
+        const nbrapportNonFini = await Rapport.count({ where: { statut : '0' } });
+        const rapportTotal: any= {};
+        rapportTotal['nbrapportFini']=nbrapportFini;
+        rapportTotal['nbrapportNonFini']=nbrapportNonFini;
+        console.log(rapportTotal)
+        console.log(nbrapportFini)
+        console.log(nbrapportNonFini)
+        return rapportTotal;
+      }
+
+      //changer le statut du rapport quand il est terminé
+      async FinishReport(id_rapport){
+        const rapport = await Rapport.findOne(id_rapport);
+
+        if (!rapport) {
+          // Handle error, e.g., return a 404 response
+          throw new Error(`Rapport with id ${id_rapport} not found`);
+        }
+    
+        rapport.statut = '1';
+        rapport.save();
+        return rapport;
+      
+      }
 }
