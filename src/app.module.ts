@@ -38,7 +38,7 @@ import { ConclusionModule } from './conclusion/conclusion.module';
       port: 5432,
       username: 'postgres',
       password: 'P@stgree50_50',
-      database: 'rappBd',
+      database: 'rapport',
       autoLoadModels: true,
      synchronize : true,
       models:[

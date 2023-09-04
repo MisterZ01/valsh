@@ -1,5 +1,4 @@
 import { Model, Column, Table, HasMany, ForeignKey, HasOne, BelongsTo } from 'sequelize-typescript';
-import { Controlenv } from './controlenv.model';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 import { Rapport } from './rapport.model';
