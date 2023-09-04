@@ -1,8 +1,10 @@
-import { Image } from './../../../models/image.model';
+import { Image } from '../../models/image.model';
 import { Injectable } from '@nestjs/common';
 
+
 @Injectable()
-export class ImagesService {
+export class ImagesiteService {
+
 
     async createImgSite(image_site: string, description_site: string, id_rapport: number) {
 
@@ -16,4 +18,5 @@ export class ImagesService {
 
 
          }
+
 }

@@ -262,9 +262,6 @@ export class Controlenv extends Model {
   //   @BelongsTo(() => Site)
   //   site: Site;
 
-   @HasMany(() => Image)
-   images: Image[];
-
   //  @HasOne(() => Synthese)
   //  synthese : Synthese
 

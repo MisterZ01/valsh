@@ -44,4 +44,11 @@ export class UtilisateurService {
     return user ;
 
   }
+
+  // Compter les utilisateurs 
+
+  countUsers(){
+    const nbUser = Utilisateur.count();
+    return nbUser;
+  }
 }

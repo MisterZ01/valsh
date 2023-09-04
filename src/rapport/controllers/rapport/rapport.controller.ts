@@ -33,4 +33,11 @@ export class RapportController {
    async findOneById(@Param('id', ParseIntPipe) id: number) {
      return this.rapp.findOneById(id);
    }
+
+     // compter les rapport
+  @Get('stat/count')
+  async countReport(){
+     const nombre_rapport = this.rapp.countReport();
+     return nombre_rapport
+  }
 }

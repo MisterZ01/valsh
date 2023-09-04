@@ -69,7 +69,12 @@ export class UtilisateurController {
   findAll() {
     return this.userServ.findAll();
   }
-
+  // compter les utilisateurs
+  @Get('stat/count')
+  async countUsers(){
+     const nombre_utilisateur = this.userServ.countUsers();
+     return nombre_utilisateur
+  }
  
 
 
