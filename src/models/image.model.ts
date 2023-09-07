@@ -14,12 +14,6 @@ export class Image extends Model {
 })
   id: number;
 
-
-  @IsNotEmpty()
-  @IsString()
-  @Column({allowNull : true})
-  image_users: string;
-
   @IsNotEmpty()
   @IsString()
   @Column({allowNull : true})
@@ -30,13 +24,6 @@ export class Image extends Model {
   @Column({allowNull : true})
   description_site: string;
 
-  @ForeignKey(() => Controlenv)
-  @Column
-   id_controlenv:number;
-   @BelongsTo(() => Controlenv)
-   controlenv: Controlenv;
-
-   
   //  @HasMany(() => Rapport)
   //  rapports: Rapport[];
 
