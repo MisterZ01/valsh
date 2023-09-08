@@ -22,7 +22,7 @@ export class Operateur extends Model {
   @IsNotEmpty()
   @IsString()
   @Column({allowNull : true})
-  typelocal: string;
+  logoperateur: string;
  
   //  @HasMany(() => Rapport)
   //  rapports : Rapport[]

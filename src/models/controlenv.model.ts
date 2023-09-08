@@ -111,7 +111,7 @@ export class Controlenv extends Model {
   @IsNotEmpty()
   @IsString()
   @Column({allowNull : true})
-  hauteurterrasse: number;
+  hauteurterrasse: string;
 
   @IsNotEmpty()
   @IsString()

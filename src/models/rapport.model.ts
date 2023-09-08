@@ -57,6 +57,17 @@ export class Rapport extends Model {
       @BelongsTo(() => Utilisateur)
       utilisateur : Utilisateur;
 
+      @IsNotEmpty()
+      @IsString()
+      @Column({allowNull : true})
+      nom_operateur: string;
+    
+    
+      @IsNotEmpty()
+      @IsString()
+      @Column({allowNull : true})
+      logo_operateur: string;
+
     
 
   // @IsNotEmpty()

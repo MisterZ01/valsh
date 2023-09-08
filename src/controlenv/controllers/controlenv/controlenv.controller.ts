@@ -55,7 +55,7 @@ export class ControlenvController {
              @Body('telemetrie') telemetrie: string,
              @Body('presencesysteme_verrouillage') presencesysteme_verrouillage: string,
              @Body('etatsysteme_verrouillage') etatsysteme_verrouillage: string,
-             @Body('hauteurterrasse') hauteurterrasse: number,
+             @Body('hauteurterrasse') hauteurterrasse: string,
              @Body('etatterrasse') etatterrasse: string,
              @Body('revetement_espace') revetement_espace: string,
             //@Body('id_site') id_site: number,
