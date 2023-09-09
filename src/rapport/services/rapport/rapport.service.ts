@@ -1,3 +1,4 @@
+import { FileInterceptor } from '@nestjs/platform-express';
 import { Image } from './../../../models/image.model';
 import { Synthese } from './../../../models/synthese.model';
 import { Injectable, NotFoundException } from '@nestjs/common';
@@ -6,19 +7,20 @@ import { Membreequipe } from 'src/models/membreequipe.model';
 import { Operateur } from 'src/models/operateur.model';
 import { Site } from 'src/models/site.model';
 import { Controlenv } from 'src/models/controlenv.model';
-import { Conclusion } from 'src/models/Conclusion.model';
-
+import { Conclusion } from 'src/models/conclusion.model';
 
 @Injectable()
 export class RapportService {
 
     //creer un rapport et renvoyer le ID
-    async createRapport( id_utilisateur: number, statut: string, titre_rapport: string) {
+    async createRapport( id_utilisateur: number, statut: string, titre_rapport: string, nom_operateur:string) {
 
         const rap = new Rapport();
         rap.id_utilisateur= id_utilisateur,
         rap.statut= statut,
         rap.titre_rapport= titre_rapport,
+        rap.nom_operateur= nom_operateur,
+        // rap.logo_operateur= logo_operateur,
 
         console.log(rap);
         await rap.save();

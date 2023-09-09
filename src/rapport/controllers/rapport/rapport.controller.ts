@@ -1,4 +1,4 @@
-import { Body, Controller, Post , Get, Param, ParseIntPipe} from '@nestjs/common';
+import { Body, Controller, Post , Get, Param, ParseIntPipe, Res} from '@nestjs/common';
 import { RapportService } from 'src/rapport/services/rapport/rapport.service';
 
 @Controller('rapport')
@@ -14,11 +14,13 @@ export class RapportController {
   
               @Body('statut') statut: string,
               @Body('titre_rapport') titre_rapport: string,
-              @Body('id_utilisateur') id_utilisateur: number){
+              @Body('id_utilisateur') id_utilisateur: number,
+              @Body('nom_operateur') nom_operateur: string){
+              // @Body('logo_operateur') logo_operateur: number){
     
                  console.log( statut, id_utilisateur)
 
-                 return await this.rapp.createRapport( id_utilisateur, statut, titre_rapport )
+                 return await this.rapp.createRapport( id_utilisateur, statut, titre_rapport, nom_operateur )
 
                }
 
@@ -56,5 +58,15 @@ export class RapportController {
   async countReport(){
      const nombre_rapport = this.rapp.countReport();
      return nombre_rapport
+  }
+
+  @Get('image-site/:imageName')
+  display(@Param('imageName') imagename,@Res() res){
+      res.sendFile(imagename,{ root: './uploads' })
+  }
+
+  @Get('plansite/:imageName')
+  display_z(@Param('imageName') imagename,@Res() res){
+      res.sendFile(imagename,{ root: './uploads' })
   }
 }

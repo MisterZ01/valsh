@@ -29,7 +29,7 @@ export class Membreequipe extends Model {
   @Column({allowNull : true})
   fonction: string;
 
-  @ForeignKey(() => Equipe)
+@ForeignKey(() => Equipe)
 @Column
  id_equipe:number;
  @BelongsTo(() => Equipe)
@@ -38,8 +38,8 @@ export class Membreequipe extends Model {
    
  @ForeignKey(() => Rapport)
  @Column 
- id_rapport : number
- @BelongsTo(() => Rapport)
- rapport : Rapport;
+  id_rapport : number
+  @BelongsTo(() => Rapport)
+  rapport : Rapport;
 
 }
