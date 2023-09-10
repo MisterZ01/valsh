@@ -48,4 +48,52 @@ async uploadSingleFileWithPost(@UploadedFile() file, @Body() body) {
 
 }
 
+@Post('image/update')
+@UseInterceptors(
+  FileInterceptor('image_site',
+        {
+            dest: './uploads',
+            storage: diskStorage({
+                destination: './uploads',
+
+                filename: (req, file, callback) => {
+
+                    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+
+                    const ext = extname(file.originalname);
+
+                    const filename = uniqueSuffix + file.originalname;
+                    
+                    callback(null, filename);
+
+                },
+            }),
+        }),
+)
+// enregistrement des autres champs
+async updateSingleFileWithPost(@UploadedFile() file, @Body() body) {
+  const description_image = body.description_image;
+  const id_rapport = body.id_rapport;
+  const id_image = body.id_image;
+  const image_site =  file.filename;
+  // enregistrement des informations
+  await this.siteServ.updateImgSite(image_site, description_image, id_rapport,id_image)
+
+}
+
+//retrouver toutes les images associées à un rappo  rt
+
+@Get('image/update/:id_rapport')
+
+  async findImgSite(@Param('id_rapport') id_rapport){
+
+      const images= await this.siteServ.findImgSite(id_rapport);
+      return images;
+  };
+// retrouver la photo unique
+  @Get('image/update/oldname/:imageName')
+  findImageByName(@Param('imageName') imagename,@Res() res){
+      res.sendFile(imagename,{ root: './uploads' })
+  }
+
 }
