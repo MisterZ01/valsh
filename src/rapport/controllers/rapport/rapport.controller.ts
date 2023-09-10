@@ -23,6 +23,18 @@ export class RapportController {
                  return await this.rapp.createRapport( id_utilisateur, statut, titre_rapport, nom_operateur )
 
                }
+
+@Post('updaterapport')
+
+    async updaterapport(
+
+          @Body('id_rapport') id_rapport: number,
+          @Body('titre_rapport') titre_rapport: string,
+          @Body('id_utilisateur') id_utilisateur: number){
+
+              return await this.rapp.updateRapport(id_rapport,id_utilisateur, titre_rapport )
+
+            }
    // afficher la liste des rapports
 
   @Get('listrapport')
@@ -34,6 +46,11 @@ export class RapportController {
    @Get(':id')
    async findOneById(@Param('id', ParseIntPipe) id: number) {
      return this.rapp.findOneById(id);
+   }
+   // retrouver un unique rapport par son ID
+   @Get('unique/:id')
+   async findUniqueById(@Param('id', ParseIntPipe) id: number) {
+     return this.rapp.findUniqueById(id);
    }
 
      // compter les rapport
