@@ -1,7 +1,7 @@
 import { Annexe } from './../../../models/annexe.model';
 import { Image } from './../../../models/image.model';
 import { Synthese } from './../../../models/synthese.model';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Rapport } from 'src/models/rapport.model';
 import { Membreequipe } from 'src/models/membreequipe.model';
 import { Operateur } from 'src/models/operateur.model';
@@ -28,6 +28,19 @@ export class RapportService {
         return dernierRapport ? dernierRapport.id : null;
 
          }
+    //Mettre à jour un rapport
+    async updateRapport( id:number,id_utilisateur: number, titre_rapport: string) {
+      
+      const rapport =  await Rapport.findOne({ where: { id } });
+      if(rapport){
+        rapport.id_utilisateur= id_utilisateur;
+        rapport.titre_rapport= titre_rapport;
+        return await rapport.save();  // On retourne le titre du rapport
+         
+      }else{
+        throw NotFoundException; // on retourne un eeception pour dire qu'on a pas trouvé le rapport
+      }
+    }
 // lister tous les rapport
 async findAll(){
     const rapports = Rapport.findAll();
@@ -62,6 +75,15 @@ async findOneById(id: number){
     // retrour des resultats combinés
     return RapportComplet
   }
+async findUniqueById(id: number){
+    // recherche dans les differentes tables
+     const rapport =  await Rapport.findOne({ where: { id } });
+     if(rapport){
+       return rapport
+     }else{
+       throw  NotFoundException;
+     }
+  }
 
     // Compter les rapport 
 
@@ -71,12 +93,9 @@ async findOneById(id: number){
         const rapportTotal: any= {};
         rapportTotal['nbrapportFini']=nbrapportFini;
         rapportTotal['nbrapportNonFini']=nbrapportNonFini;
-        console.log(rapportTotal)
-        console.log(nbrapportFini)
-        console.log(nbrapportNonFini)
         return rapportTotal;
       }
-
+        
       //changer le statut du rapport quand il est terminé
       async FinishReport(id_rapport){
         const rapport = await Rapport.findOne(id_rapport);

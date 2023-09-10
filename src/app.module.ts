@@ -41,8 +41,8 @@ import { Annexe } from 'src/models/annexe.model';
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'P@stgree50_50',
-      database: 'ijkl',
+      password: 'root',
+      database: 'abcd',
       autoLoadModels: true,
      synchronize : true,
       models:[
