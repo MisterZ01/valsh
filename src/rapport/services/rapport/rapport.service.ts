@@ -1,7 +1,7 @@
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Image } from './../../../models/image.model';
 import { Synthese } from './../../../models/synthese.model';
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
 import { Rapport } from 'src/models/rapport.model';
 import { Membreequipe } from 'src/models/membreequipe.model';
 import { Operateur } from 'src/models/operateur.model';
@@ -108,4 +108,32 @@ async findUniqueById(id: number){
         return rapport;
       
       }
+
+  //supprimer un rapport et ses information dans toutes les tables à partir de son id
+  async DeleteReportById(id: number) {
+    try {
+      // recherche dans les differentes tables
+      const rapport = await Rapport.findOne({ where: { id } });
+      if (rapport) {
+        await Promise.all([
+          Membreequipe.destroy({ where: { id_rapport: id } }),
+          Operateur.destroy({ where: { id_rapport: id } }),
+          Synthese.destroy({ where: { id_rapport: id } }),
+          Site.destroy({ where: { id_rapport: id } }),
+          Image.destroy({ where: { id_rapport: id } }),
+          Controlenv.destroy({ where: { id_rapport: id } }),
+          Conclusion.destroy({ where: { id_rapport: id } }),
+          Rapport.destroy({ where: { id } }),
+        ]);
+  
+        // Return a success status
+        return { status: 'success', message: 'Rapport supprimé avec succès' };
+      } else {
+        throw new NotFoundException('Rapport non trouvé !');
+      }
+    } catch (error) {
+      // Handle errors and return an appropriate error response
+      return { status: 'error', message: error.message };
+    }
+  }
 }

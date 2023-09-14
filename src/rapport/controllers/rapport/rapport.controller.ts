@@ -1,5 +1,7 @@
-import { Body, Controller, Post , Get, Param, ParseIntPipe, Res} from '@nestjs/common';
+import { Body, Controller, Post , Get,Delete, Param, ParseIntPipe, Res, InternalServerErrorException} from '@nestjs/common';
 import { RapportService } from 'src/rapport/services/rapport/rapport.service';
+import {  Request  } from '@nestjs/common';
+import {  Response  } from 'express';
 
 @Controller('rapport')
 export class RapportController {
@@ -69,4 +71,27 @@ export class RapportController {
   display_z(@Param('imageName') imagename,@Res() res){
       res.sendFile(imagename,{ root: './uploads' })
   }
+
+
+  // Define a route that handles the delete request
+  
+  @Delete('/delete/:id')
+
+  async supprimerRapport(@Param('id') id: number, @Res() res: Response) {
+    try {
+      const result = await this.rapp.DeleteReportById(id);
+
+      if (result.status === 'success') {
+        res.status(204).end(); // Use 204 (No Content) status for successful deletions
+      } else {
+        res.status(404).json({ error: result.message });
+      }
+    } catch (error) {
+      // Handle any unexpected errors
+      console.error(error);
+      throw new InternalServerErrorException('Une erreur est survenu sur le serveur');
+    }
+  }
+
+
 }
