@@ -1,4 +1,4 @@
-import { FileInterceptor } from '@nestjs/platform-express';
+import { Annexe } from './../../../models/annexe.model';
 import { Image } from './../../../models/image.model';
 import { Synthese } from './../../../models/synthese.model';
 import { HttpException, Injectable, NotFoundException } from '@nestjs/common';
@@ -58,6 +58,7 @@ async findOneById(id: number){
      const image =  Image.findAll({ where: { id_rapport : id } });
      const controlenv =  Controlenv.findAll({ where: { id_rapport : id } });
      const conclusion =  Conclusion.findAll({ where: { id_rapport : id } });
+     const annexe =  Annexe.findAll({ where: { id_rapport : id } });
 
     // Combinaisons des resultats
     const RapportComplet: any[] = [];
@@ -69,6 +70,7 @@ async findOneById(id: number){
     if (image) RapportComplet.push((await image)); // A revoir .......
     if (controlenv) RapportComplet.push((await controlenv)); 
     if (conclusion) RapportComplet.push((await conclusion)); 
+    if (annexe) RapportComplet.push((await annexe)); 
 
     // retrour des resultats combinés
     return RapportComplet
