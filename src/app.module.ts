@@ -1,3 +1,4 @@
+import config from '../config/config';
 import { Image } from './models/image.model';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -36,13 +37,14 @@ import { Annexe } from 'src/models/annexe.model';
     
     MulterModule.register({dest: './uploads'}),
     
-    SequelizeModule.forRoot({
+    SequelizeModule.forRoot(
+      {
       dialect: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'root',
-      database: 'abcd',
+      host: process.env.NODE_ENV === 'production' ? config.production.host : config.development.host,
+      username: process.env.NODE_ENV === 'production' ? config.production.username : config.development.username,
+      password: process.env.NODE_ENV === 'production' ? config.production.password : config.development.password,
+      port: process.env.NODE_ENV === 'production' ? config.production.port : config.development.port,
+      database: process.env.NODE_ENV === 'production' ? config.production.database : config.development.database,
       autoLoadModels: true,
      synchronize : true,
       models:[
