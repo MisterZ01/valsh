@@ -100,13 +100,17 @@ async findUniqueById(id: number){
       async FinishReport(id_rapport:any){
 
         const rapport = await Rapport.findOne(id_rapport);
+        console.log('avant')
+        console.log(rapport.statut)
         console.log("je suis dans finishReport voici id_rapport en bas")
         if (!rapport) {
           // Handle error, e.g., return a 404 response
           throw new Error(`Rapport with id ${id_rapport} not found`)
         };
-
+        
         rapport.statut = '1'
+        console.log('après')
+        console.log(rapport.statut)
         await rapport.save();
         return rapport;
       
