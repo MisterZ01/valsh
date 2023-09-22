@@ -12,6 +12,7 @@ export class AnnexeService {
         console.log(img);
         return await img.save()
 
-         }
+
+     }
 
 }
