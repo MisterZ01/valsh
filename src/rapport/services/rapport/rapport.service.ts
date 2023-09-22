@@ -111,8 +111,13 @@ async findUniqueById(id: number){
         rapport.statut = '1'
         console.log('après')
         console.log(rapport.statut)
-        await rapport.save();
-        return rapport;
+        try {
+          console.log('oooooooooooook')
+          await rapport.save();
+        } catch (error) {
+          console.log('nnnnnnnnnnnoooooooook')
+          console.error("Erreur lors de la sauvegarde du rapport :", error);
+        };
       
       }
 }
