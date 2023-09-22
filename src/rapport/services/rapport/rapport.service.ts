@@ -98,14 +98,21 @@ async findUniqueById(id: number){
         
       //changer le statut du rapport quand il est terminé
       async FinishReport(id_rapport:any){
-        const rapport = await Rapport.findOne(id_rapport);
 
+        const rapport = await Rapport.findOne(id_rapport);
+        console.log("je suis dans finishReport voici id_rapport en bas")
+        console.log(id_rapport)
         if (!rapport) {
           // Handle error, e.g., return a 404 response
           throw new Error(`Rapport with id ${id_rapport} not found`);
         }
 
+        console.log("le rapport a ete modifié")
+        console.log("statut avant en bas")
+        console.log(rapport.statut)
         rapport.statut = '1';
+        console.log("statut apres en bas")
+        console.log(rapport.statut)
         rapport.save();
         return rapport;
       

@@ -41,7 +41,7 @@ export class AnnexeController {
       console.log(image_annexe, id_rapport)
       // enregistrement des informations de l'utilisateur
       await this.annexeServ.createAnnexeImg(image_annexe, id_rapport)
-    console.log(id_rapport)
+     console.log(id_rapport)
       await this.rapp.FinishReport(id_rapport)
     
     }
