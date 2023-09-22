@@ -120,6 +120,7 @@ async findUniqueById(id: number){
           Image.destroy({ where: { id_rapport: id } }),
           Controlenv.destroy({ where: { id_rapport: id } }),
           Conclusion.destroy({ where: { id_rapport: id } }),
+          Annexe.destroy({ where: { id_rapport: id } }),
           Rapport.destroy({ where: { id } }),
         ]);
   
