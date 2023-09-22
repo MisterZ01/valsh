@@ -73,7 +73,7 @@ export class RapportController {
   }
 
 
-  // Define a route that handles the delete request
+  // suppression d'un rapport
   
   @Delete('/delete/:id')
 
